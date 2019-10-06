@@ -94,8 +94,6 @@ class StudentTestSerializer(DynamicFieldsModelSerializer):
             for a in q['answers']:
                 student_answer.answers.add(a)
             student_test.questions.add(student_answer)
-        student_test.passed = True
-        student_test.save()
         serializer = StudentTestSerializer(instance=student_test)
         return serializer.data
 

@@ -111,6 +111,9 @@ class TestRUDView(generics.RetrieveUpdateDestroyAPIView):
                     student_test = serializer.save()
                 else:
                     student_test = serializer.errors
+            test = StudentTest.objects.get(pk=student_test['id'])
+            test.passed = True
+            test.save()
             return Response(student_test)
         return Response(status=HTTP_400_BAD_REQUEST)
 
